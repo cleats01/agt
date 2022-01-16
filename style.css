@@ -64,7 +64,7 @@
   }
   
   .image-upload-wrap {
-    border: 1.5px dashed #1FB264;
+    border: 2px dashed #1FB264;
     position: relative;
     object-fit: contain;
     border-radius: 10px;
