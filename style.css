@@ -148,7 +148,7 @@
     border-color:#ffffff;
   }
   .section {
-    margin-top: 100px;
+    margin-top: 5rem;
   }
 
   .title {
@@ -167,7 +167,7 @@
     line-height: 1.53;
     text-align: center;
     color: #9bdd95;
-    margin-bottom: 2rem;
+    margin-bottom: 5rem;
   }
 
   /* On screens that are 600px or less, set the background color to olive */
