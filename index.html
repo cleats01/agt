@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"/>
 
       <!-- 오픈그래프 , 트위터카드 : 웹페이지가 공유됐을때 요약 정보 -->
     <meta property="og:type" content="website" />
@@ -40,20 +41,50 @@
     <!-- NAVIGATION BAR -->
     <nav class="navbar navbar-expand-lg navbar-light nav-distance">
         <div class="container-fluid">
-            <a class="navbar-brand" href="./index.html">Team agt</a>
-            <a href="https://hits.seeyoufarm.com">
-                <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fagt-insta.netlify.app&count_bg=%2379C83D&title_bg=%23555555&icon=instagram.svg&icon_color=%23FFFFFF&title=hits&edge_flat=false"/>
-            </a>
+            <a class="navbar-brand" href="./index.html">ollilggamalgga</a>
+            <div class="navbar__icons">
+                <img src="./images/heart.png" alt="heart">
+                <img src="./images/send.png" alt="airplane">
+            </div>
         </div>
     </nav>
 
 
-
-    <!-- TITLE -->
-    <section class="section">
-        <h1 class="title">인스타 올려말아</h1>
-        <h2 class="subtitle">이 사진, 좋아요 받을 수 있을까?</h2>
+    <!-- STORY SECTION -->
+    <section class="story">
+        <div class="story-container">
+            <ul class="story-circles">
+                <li>
+                    <img src="./images/story-ring.png" alt="1k">
+                    <span>내 스토리</span>
+                </li>
+                <li><img src="./images/story-ring.png" alt="10k">
+                    <span>ex_1k</span>
+                </li>
+                <li>
+                    <img src="./images/story-ring.png" alt="100k">
+                    <span>ex_10k</span>
+                </li>
+                <li>
+                    <img src="./images/story-ring.png" alt="1000k">
+                    <span>ex_100k</span>
+                </li>
+            </ul>
+        </div>
     </section>
+
+
+
+    <!-- MY NAME -->
+    <section class="my-name">
+        <div class="my-name-container">
+            <img class="profile" src="./images/story-ring.png" alt="myProfile">
+            <span>profile_name</span>
+            <img class="badge" src="./images/correct.png" alt="badge">
+        </div>
+    </section>
+
+ 
 
 
 
@@ -129,7 +160,7 @@
     <!-- IMAGE UPLOAD -->
     <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <div class="container file-upload">
-        <div class="image-upload-wrap" style="width: 40%; margin: 0 auto;">
+        <div class="image-upload-wrap">
             <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
             <div class="drag-text">
                 <span class="material-icons-outlined">file_upload</span>
@@ -145,16 +176,27 @@
                 </div>
                 <p class="text-center">AI가 사진의 감성지수를 파악중입니다.</p>
             </div>
-            <p class="result-message"></p>
+            <!-- <p class="result-message"></p> -->
             <div id="label-container"></div>
-            <div class="addthis_inline_share_toolbox"></div>
-            <div class="pt-3 image-title-wrap">
+            <!-- <div class="pt-3 image-title-wrap">
                 <button type="button p-2" class="try-again-btn" onclick="window.location.reload();">
                     <span class="try-again-text">다른 사진 해보기</span>
                 </button>
-            </div>
+            </div> -->
         </div>
     </div>
+
+
+    <!-- BOTTOM ICONS -->
+    <section class="bottom-icons-container">
+        <img src="./images/heart.png" alt="heart" class="heart">
+        <img src="./images/send.png" alt="share" class="share">
+    </section>
+
+    <!-- RESULT -->
+    <section class="like-it">
+        <div id="label-container"></div>
+    </section>
 
 
     <script>
