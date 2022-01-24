@@ -50,199 +50,30 @@
     </nav>
 
 
-    <!-- STORY SECTION -->
-    <section class="story">
-        <div class="story-container">
-            <ul class="story-circles">
-                <li>
-                    <img src="./images/story-ring.png" alt="1k">
-                    <span>내 스토리</span>
-                </li>
-                <li><img src="./images/story-ring.png" alt="10k">
-                    <span>ex_1k</span>
-                </li>
-                <li>
-                    <img src="./images/story-ring.png" alt="100k">
-                    <span>ex_10k</span>
-                </li>
-                <li>
-                    <img src="./images/story-ring.png" alt="1000k">
-                    <span>ex_100k</span>
-                </li>
-            </ul>
+    <section class="title">
+        <div class="title-main">
+            <h1>ollilggamalgga</h1>
+        </div>
+        <div class="title-korean">
+            <h3>올릴까 말까</h3>
+        </div>
+        <div class="subtitle">
+            <h5>AI가 알려주는 나의 인스타 갬성지수</h5>
+        </div>
+        <div class="logo-image">
+            <img src="./images/logo.png" alt="logo">
+        </div>
+        <div class="start-button">
+            <button onclick="location.href='./start/index.html'" type="button" class="btn btn-outline-light">
+                시작 해보기
+            </button>
         </div>
     </section>
 
 
 
-    <!-- MY NAME -->
-    <section class="my-name">
-        <div class="my-name-container">
-            <img class="profile" src="./images/story-ring.png" alt="myProfile">
-            <span>profile_name</span>
-            <img class="badge" src="./images/correct.png" alt="badge">
-        </div>
-    </section>
-
- 
 
 
-
-    <!-- TEACHABLE MACHINE -->
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
-    <script type="text/javascript">
-
-        const URL = "https://teachablemachine.withgoogle.com/models/xElSsMvv4/";
-
-        let model, webcam, labelContainer, maxPredictions;
-
-        async function init() {
-            const modelURL = URL + "model.json";
-            const metadataURL = URL + "metadata.json";
-
-            model = await tmImage.load(modelURL, metadataURL);
-            maxPredictions = model.getTotalClasses();
-            labelContainer = document.getElementById("label-container");
-            for (let i = 0; i < maxPredictions; i++) { // and class labels
-                labelContainer.appendChild(document.createElement("div"));
-            }
-        }
-
-        async function predict() {
-            var image = document.getElementById("insta-photo")
-            const prediction = await model.predict(image, false);
-            prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
-
-
-            var resultMessege;
-            switch (prediction[0].className) {
-                case "1.감성":
-                    resultMessege = "감성샷! 좋아요 받을 일만 남았다"
-                    break;
-                case "2.보통":
-                    resultMessege = "평범샷. 스토리에나 올려볼까?"
-                    break;
-                case "3.별로":
-                    resultMessege = "흠... 다시 찍어보자"
-                    break;
-                default:
-                    resultMessege = "알수없음"
-            }
-
-
-            $('.result-message').html(resultMessege);
-            for (let i = 0; i < 1; i++) {
-                var labelTitle;
-                switch (prediction[i].className) {
-                    case "1.감성":
-                        labelTitle = "감성 수치"
-                        break;
-                    case "2.보통":
-                        labelTitle = "평범 수치"
-                        break;
-                    case "3.별로":
-                        labelTitle = "별로 수치"
-                        break;
-                    default:
-                        labelTitle = "알수없음"
-                }
- 
-                const classPrediction =
-                    labelTitle + " : " + prediction[i].probability.toFixed(2) * 100 + "%";
-                labelContainer.childNodes[i].innerHTML = classPrediction;
-            }
-        }
-    </script>
-
-
-
-    <!-- IMAGE UPLOAD -->
-    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <div class="container file-upload">
-        <div class="image-upload-wrap">
-            <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
-            <div class="drag-text">
-                <span class="material-icons-outlined">file_upload</span>
-                <h3 class="mb-4 pb-3 pt-2 upload-text">
-                    여기에 새로운<br>사진을 업로드!
-                </h3>
-            </div>
-        </div>
-        <div class="file-upload-content">
-            <img class="file-upload-image" id="insta-photo" src="#" alt="your image" />
-            <div id="loading" class="animated bounce">
-                <div class="spinner-border" role="status">
-                </div>
-                <p class="text-center">AI가 사진의 감성지수를 파악중입니다.</p>
-            </div>
-            <!-- <p class="result-message"></p> -->
-            <div id="label-container"></div>
-            <!-- <div class="pt-3 image-title-wrap">
-                <button type="button p-2" class="try-again-btn" onclick="window.location.reload();">
-                    <span class="try-again-text">다른 사진 해보기</span>
-                </button>
-            </div> -->
-        </div>
-    </div>
-
-
-    <!-- BOTTOM ICONS -->
-    <section class="bottom-icons-container">
-        <img src="./images/heart.png" alt="heart" class="heart">
-        <img src="./images/send.png" alt="share" class="share">
-    </section>
-
-    <!-- RESULT -->
-    <section class="like-it">
-        <div id="label-container"></div>
-    </section>
-
-
-    <script>
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $('.image-upload-wrap').hide();
-                    $('#loading').show();
-                    $('.file-upload-image').attr('src', e.target.result);
-                    $('.file-upload-content').show();
-                    $('.image-title').html(input.files[0].name);
-                };
-                reader.readAsDataURL(input.files[0]);
-                init().then(() => {
-                    console.log("loading");
-                    predict();
-                    $('#loading').hide();
-                });
-
-            } else {
-                removeUpload();
-            }
-        }
-
-        function removeUpload() {
-            $('.file-upload-input').replaceWith($('.file-upload-input').clone());
-            $('.file-upload-content').hide();
-            $('.image-upload-wrap').show();
-        }
-        $('.image-upload-wrap').bind('dragover', function () {
-            $('.image-upload-wrap').addClass('image-dropping');
-        });
-        $('.image-upload-wrap').bind('dragleave', function () {
-            $('.image-upload-wrap').removeClass('image-dropping');
-        });
-
-    </script>
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-61d57ce1cd07b24a"></script>
-    </div>
 </body>
 <!--Copyright (c) 2022 by Aaron Vanston (https://codepen.io/aaronvanston/pen/yNYOXR)
 
