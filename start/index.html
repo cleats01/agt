@@ -246,12 +246,12 @@
         $(":image").on('click', function(e) {
 
             html2canvas(e.target.parentElement.parentElement).then(function(canvas) {
-                var el = document.getElementById("target");
-                el.href = canvas.toDataURL("image/jpeg");
-                el.download = 'insta-olmal.jpg';
-                el.click();
+                canvas.toBlob(function(blob){ var item = new ClipboardItem({ "image/png": blob }); navigator.clipboard.write([item]); });
+                // var el = document.getElementById("target");
+                // el.href = canvas.toDataURL("image/jpeg");
+                // el.download = 'insta-olmal.jpg';
+                // el.click();
             });
-
         });
     </script>
     </div>
