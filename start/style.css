@@ -276,7 +276,7 @@
   width: 80%;
   color:rgb(0, 0, 0);
   font-family: 'NanumSquare';
-  font-size: 13px;
+  font-size: 15px;
 }
 
 /* BOTTOM ICONS */
@@ -286,6 +286,11 @@
   height: 50px;
 }
 .bottom-icons-container img {
+  position: relative;
+  width: 26px;
+  margin: 12px 0 0 17px;
+}
+.bottom-icons-container input {
   position: relative;
   width: 26px;
   margin: 12px 0 0 17px;

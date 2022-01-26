@@ -27,6 +27,7 @@
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-61d57ce1cd07b24a"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5LXE4DWWMR"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -189,7 +190,7 @@
     <!-- BOTTOM ICONS -->
     <section class="bottom-icons-container">
         <img src="./images/heart.png" alt="heart" class="heart">
-        <img src="./images/send.png" alt="share" class="share">
+        <input type="image" src="./images/send.png"  />
     </section>
 
     <!-- RESULT -->
@@ -197,6 +198,7 @@
         <div id="label-container"></div>
     </section>
 
+    <a id="target" style="display: none"></a>
 
     <script>
         function readURL(input) {
@@ -236,11 +238,22 @@
     </script>
 
 
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-61d57ce1cd07b24a"></script>
+    <script>
+        $(":image").on('click', function(e) {
+
+            html2canvas(e.target.parentElement.parentElement).then(function(canvas) {
+                var el = document.getElementById("target");
+                el.href = canvas.toDataURL("image/jpeg");
+                el.download = 'insta-olmal.jpg';
+                el.click();
+            });
+
+        });
+    </script>
     </div>
 </body>
 <!--Copyright (c) 2022 by Aaron Vanston (https://codepen.io/aaronvanston/pen/yNYOXR)
