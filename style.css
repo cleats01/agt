@@ -54,6 +54,11 @@
   font-size: 45px;
   margin-top: 90px;
 }
+.title .title-main img {
+  margin-top: 100px;
+  height: auto;
+  width: 390px;
+}
 
 .title .title-korean h3 {
   text-align: center;
